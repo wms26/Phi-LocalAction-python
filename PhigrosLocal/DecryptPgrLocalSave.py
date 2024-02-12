@@ -24,7 +24,8 @@ game_save = {
             'avatar': {},  # 在实际解密后带3key头，对应头像解锁
             'other': {}  # 防止往后版本出现新的键，用于存储无法解析的键
             },
-    'grade': {},
+    'open': {},  # 收藏品打开情况
+    'grade': {},  # 一些歌曲的IN解锁
     'lock': {},
     'other': {}  # 防止往后版本出现新的键，用于存储无法解析的键
 }
@@ -64,47 +65,51 @@ for element in saveData.iter():  # 遍历存档文件里面的对象(应该是�
     if element.tag == 'string':  # 判断标签是否为'string'，如果是则对其内容进行解密
         attrib_str = AESDecrypt(element.attrib.get('name', ''))  # 取标签'name=**...'的值并解密
         text_str = AESDecrypt(element.text)  # 取该元素的内容
-        # if 'key' in attrib_str:
-        if re.match(r'^\d+key*.', attrib_str):
-            if '0key' in attrib_str:
+        if re.match(r'^\dkey*.', attrib_str):  # 用来分类带key头的
+            if '0key' in attrib_str:  # 单曲解锁
                 game_save['key']['single'][attrib_str.replace('0key', '')] = text_str
-            elif '1key' in attrib_str:
-                game_save['key']['collection'][attrib_str.replace('1key', '')] = text_str
-            elif '2key' in attrib_str:
-                game_save['key']['illustration'][attrib_str.replace('2key', '')] = text_str
-            elif '3key' in attrib_str:
-                game_save['key']['avatar'][attrib_str.replace('3key', '')] = text_str
-            else:
-                if is_dict(text_str):
-                    game_save['record'][attrib_str] = text_str
-                else:
-                    game_save['key']['other'][attrib_str] = text_str
-        elif is_dict(text_str):
-            # else:
-            game_save['record'][attrib_str] = text_str
-        else:
-            if 'Grade' in attrib_str:
-                text_str = AESDecrypt(element.text)
-                game_save['grade'][attrib_str] = text_str
-            elif 'lock' in attrib_str:
-                text_str = AESDecrypt(element.text)
-                game_save['lock'][attrib_str] = text_str
-            else:
-                game_save['other'][str(attrib_str)] = str(text_str)
 
-    elif element.tag == 'int':
+            elif '1key' in attrib_str:  # 收藏品解锁
+                game_save['key']['collection'][attrib_str.replace('1key', '')] = text_str
+
+            elif '2key' in attrib_str:  # 曲绘解锁
+                game_save['key']['illustration'][attrib_str.replace('2key', '')] = text_str
+
+            elif '3key' in attrib_str:  # 头像解锁
+                game_save['key']['avatar'][attrib_str.replace('3key', '')] = text_str
+
+            else:
+                game_save['key']['other'][attrib_str] = text_str
+        elif is_dict(text_str):  # 打歌记录
+            game_save['record'][attrib_str] = text_str
+
+        elif re.match(r'.*Opened$', attrib_str):  # 收藏品打开
+            game_save['open'][attrib_str] = text_str
+
+        elif re.match(r'.*Grade$', attrib_str):  # 一些歌曲的IN难度解锁
+            game_save['grade'][attrib_str.replace('Grade', '')] = text_str
+
+        elif 'lock' in attrib_str:
+            game_save['lock'][attrib_str] = text_str
+
+        else:
+            game_save['other'][attrib_str] = text_str
+
+    elif element.tag == 'int':  # int类型的都没有加密
         attrib_str = urllib.parse.unquote(element.attrib.get('name', ''))
         text_str = element.attrib.get('value', '')
         game_save['info'][attrib_str] = text_str
 
-    elif element.tag == 'map':
+    elif element.tag == 'map':  # emmm...xml文件开头有个map标签，这里直接跳过
         attrib_str = None
         text_str = None
-    else:
+    else:  # 没归类的全部丢到other去
         attrib_str = urllib.parse.unquote(element.attrib.get('name', ''))
         if attrib_str is not None:
             text_str = element.text
             game_save['other'][attrib_str] = text_str
+        else:
+            text_str = None
     print(f"{i}  类型: {element.tag}, 标签: {attrib_str}, 内容: {text_str}")
 
 print('setting：\n' + str(game_save['info']))

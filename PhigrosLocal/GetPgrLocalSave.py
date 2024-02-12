@@ -4,14 +4,10 @@ from PhigrosLocal.ActionLib import config, runCmd, adbCheck
 import os  # 目录和路径及文件的操作
 import tarfile  # 解压解包后的压缩包文件
 import shutil  # 用于在解压时临时目录的操作
-import sys  # 为了解决一个无关紧要的bug
 
 # ---------------------- 定义赋值区 ----------------------
 
 local_path = os.path.dirname(os.path.abspath(__file__))  # 获取当前脚本的绝对路径喵
-
-# sys.path.append(os.path.join(local_path, 'PhigrosLocal'))
-# from ActionLib import config, runCmd, adbCheck
 
 ab_minSize = 1 * 1024  # 正确ab备份包大小的最小阈值喵(乘1024是因为os库获取到的以字节为单位喵)
 
@@ -116,15 +112,18 @@ def unzip_save():
             if save_path in tar.getnames():  # 检查要提取的文件是否在tar压缩包中喵
                 os.makedirs(os.path.join(out_save, 'temp'))  # 创建临时目录喵
                 tar.extract(save_path, os.path.join(out_save, 'temp'))  # 提取存档文件到临时目录内喵
-                shutil.move(os.path.join(out_save, 'temp', save_path), os.path.join(out_save, os.path.basename(save_path)))  # 移动存档到保存目录喵
+                shutil.move(str(os.path.join(out_save, 'temp', save_path)),
+                            str(os.path.join(out_save, os.path.basename(save_path))))  # 移动存档到保存目录喵
                 shutil.rmtree(os.path.join(out_save, 'temp'))  # 删除临时目录喵
                 print(f'[Info]存档"{save_path}"喵，已解压至："{out_save}"')
 
             else:
                 print(f"[Error]在压缩包中未找到存档文件喵：'{save_path}'")
+                exit()
 
     except tarfile.TarError as e:
         print(f"[Error]提取文件时发生错误喵: {e}")
+        exit()
 
 
 def kill_adb():
