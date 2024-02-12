@@ -2,15 +2,16 @@
 # ----------------------- 导包区 -----------------------
 import subprocess
 import os
-import json
+import yaml
 
 # ---------------------- 定义赋值区 ----------------------
 
 local_path = os.path.dirname(os.path.abspath(__file__))  # 获取当前脚本的绝对路径喵
 
-config_path = os.path.join(local_path, 'config.json')
+config_name = 'config.yaml'
+config_path = os.path.join(local_path, config_name)
 with open(config_path, mode='r', encoding='utf-8') as config:
-    config_data = json.loads(config.read())
+    config_data = yaml.safe_load(config)
     config.close()
     del config
 
@@ -112,21 +113,37 @@ def runCmd(cmd, outerr=False, prerr=True):  # 运行命令并进行简单的判�
         return output  # 没错误就输出执行结果喵
 
 
-def adbCheck():
-    """检查设备有没有正确连接adb"""
+def adbCheck(doexit=True):
+    """检查设备有没有正确连接adb\n
+    doexit：检查到未正确连接是否直接exit(默认为True)"""
     runCmd(adb_path + ' devices', prerr=False)
     output = runCmd(adb_path + ' devices', outerr=True)
 
     if output is not None and '\tdevice' not in output:  # 判断关键字是否存在于输出内容中喵，不存在就证明没有连接adb喵
         if 'unauthorized' in output:
             print('[Error]你没有允许本计算机对手机进行调试喵！')
-            exit()  # 输出完错误直接跑路喵(诶嘿)
+            if doexit:
+                exit()  # 输出完错误直接跑路喵(诶嘿)
+            return False
+
         elif 'recovery' in output:
             print('[Error]喵？你怎么在Recovery模式啊喵？请重启到系统先喵！')
-            exit()  # 输出完错误直接跑路喵(诶嘿)
+            if doexit:
+                exit()  # 输出完错误直接跑路喵(诶嘿)
+            return False
+
         else:
             print('[Error]没有任何设备连接到adb喵！')
-            exit()  # 输出完错误直接跑路喵(诶嘿)
+            if doexit:
+                exit()  # 输出完错误直接跑路喵(诶嘿)
+            return False
+    return True
+
+
+def adbCmd(cmd):  # 我也不知道为什么要定义这个喵（
+    """便捷(?)运行adb指令喵(?)\n
+    cmd：运行adb时附带的参数喵"""
+    return runCmd(adb_path + ' ' + cmd)
 
 
 # ----------------------- 运行区 -----------------------

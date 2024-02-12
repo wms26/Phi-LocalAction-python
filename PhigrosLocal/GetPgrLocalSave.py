@@ -1,13 +1,17 @@
 # 萌新写的代码喵，可能不是很好喵，但是已经尽可能注释了喵，希望各位大佬谅解喵=v=
 # ----------------------- 导包区 -----------------------
-from .ActionLib import config, runCmd, adbCheck
-import os
-import tarfile
-import shutil
+from PhigrosLocal.ActionLib import config, runCmd, adbCheck
+import os  # 目录和路径及文件的操作
+import tarfile  # 解压解包后的压缩包文件
+import shutil  # 用于在解压时临时目录的操作
+import sys  # 为了解决一个无关紧要的bug
 
 # ---------------------- 定义赋值区 ----------------------
 
 local_path = os.path.dirname(os.path.abspath(__file__))  # 获取当前脚本的绝对路径喵
+
+# sys.path.append(os.path.join(local_path, 'PhigrosLocal'))
+# from ActionLib import config, runCmd, adbCheck
 
 ab_minSize = 1 * 1024  # 正确ab备份包大小的最小阈值喵(乘1024是因为os库获取到的以字节为单位喵)
 
@@ -19,7 +23,7 @@ save_path = config('save')  # 存档文件在压缩包中的路径喵(用于解�
 
 ab_path = './phigros.ab'  # ab备份包的路径喵(保存和解包用的都是这个喵)
 out_path = './phigros.tar'  # 解包得到的压缩包路径喵(保存和解压用的都是这个喵)
-out_save = './'  # 最后解压输出的路径喵
+out_save = config('outpath')  # 最后解压输出的路径喵
 
 
 def appIsRunning(package):
@@ -112,8 +116,7 @@ def unzip_save():
             if save_path in tar.getnames():  # 检查要提取的文件是否在tar压缩包中喵
                 os.makedirs(os.path.join(out_save, 'temp'))  # 创建临时目录喵
                 tar.extract(save_path, os.path.join(out_save, 'temp'))  # 提取存档文件到临时目录内喵
-                shutil.move(os.path.join(out_save, 'temp', save_path),
-                            os.path.join(out_save, os.path.basename(save_path)))  # 移动存档到保存目录喵
+                shutil.move(os.path.join(out_save, 'temp', save_path), os.path.join(out_save, os.path.basename(save_path)))  # 移动存档到保存目录喵
                 shutil.rmtree(os.path.join(out_save, 'temp'))  # 删除临时目录喵
                 print(f'[Info]存档"{save_path}"喵，已解压至："{out_save}"')
 
