@@ -11,7 +11,8 @@
 [![phi-plugin](https://img.shields.io/badge/废酱-phi--plugin-blue?style=for-the-badge&logo=github)](https://github.com/Catrong/phi-plugin)
 
 
-[![Phi-LocalAction-python_v0.7beta](https://img.shields.io/github/downloads/wms26/Phi-LocalAction-python/v0.7beta/Phi-LocalAction-python_v0.7beta.zip?style=for-the-badge&logo=Github)](https://github.com/wms26/Phi-LocalAction-python/releases/download/v0.7beta/Phi-LocalAction-python_v0.7beta.zip)
+[![Phi-LocalAction-python_v0.7beta](https://img.shields.io/badge/PRE--release-Phi--LocalAction--python__v0.7beta-yellow?style=for-the-badge&logo=Github)
+](https://github.com/wms26/Phi-LocalAction-python/releases/download/v0.7beta/Phi-LocalAction-python_v0.7beta.zip)
 
 </div>
 
