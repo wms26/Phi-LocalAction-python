@@ -1,6 +1,6 @@
 # 萌新写的代码喵，可能不是很好喵，但是已经尽可能注释了喵，希望各位大佬谅解喵=v=
 # ----------------------- 导包区 -----------------------
-from PhigrosLocal.ActionLib import config, runCmd, adbCheck
+from PhiLocalLib.ActionLib import config, runCmd, adbCheck
 import os  # 目录和路径及文件的操作
 import tarfile  # 解压解包后的压缩包文件
 import shutil  # 用于在解压时临时目录的操作

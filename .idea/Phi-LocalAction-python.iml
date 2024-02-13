@@ -4,6 +4,8 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/venv" />
       <excludeFolder url="file://$MODULE_DIR$/转写" />
+      <excludeFolder url="file://$MODULE_DIR$/releases" />
+      <excludeFolder url="file://$MODULE_DIR$/资料" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.9" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -11,7 +13,7 @@
   <component name="PyNamespacePackagesService">
     <option name="namespacePackageFolders">
       <list>
-        <option value="$MODULE_DIR$/PhigrosLocal" />
+        <option value="$MODULE_DIR$/PhiLocalLib" />
       </list>
     </option>
   </component>

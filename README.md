@@ -5,11 +5,13 @@
 
 [![Github仓库喵](https://img.shields.io/badge/github-Phi--LA--py-red?style=for-the-badge&logo=Github)](https://github.com/wms26/PhigrosLocal)
 
-<img src="https://counter.seku.su/cmoe?name=phi-local-py&theme=r34" title="喵喵喵~"/><br>
+<img src="https://counter.seku.su/cmoe?name=phi-local-py&theme=r34" title="喵喵喵~" onclick="alert('喵喵喵？')"/><br>
 
 [![PhigrosLibrary](https://img.shields.io/badge/文酱-Phigros_Library-blue?style=for-the-badge&logo=Github)](https://github.com/7aGiven/PhigrosLibrary)
 [![phi-plugin](https://img.shields.io/badge/废酱-phi--plugin-blue?style=for-the-badge&logo=github)](https://github.com/Catrong/phi-plugin)
 
+
+[![Phi-LocalAction-python_v0.7beta](https://img.shields.io/github/downloads/wms26/Phi-LocalAction-python/v0.7beta/Phi-LocalAction-python_v0.7beta.zip?style=for-the-badge&logo=Github)](https://github.com/wms26/Phi-LocalAction-python/releases/download/v0.7beta/Phi-LocalAction-python_v0.7beta.zip)
 
 </div>
 
@@ -25,13 +27,13 @@
 
 1. 编写本项目时使用的是 **python3.9.13** 的喵，不能完全保证其他版本会不会出现问题喵，建议使用 **python>=3.9** 来运行喵~
 
-2. 注意在使用本项目前要先安装`PhigrosLocal/requirement.txt`中的模块喵(虽然目前只有一个`pyyaml`喵)
+2. 注意在使用本项目前要先安装`PhiLocalLib/requirement.txt`中的模块喵(虽然目前只有`pyyaml`和`pycryptodome`喵)
 
-3. abe的运行是需要 **java11** 环境的喵，本项目调用的是便携版 **java11(jdk11)** 的喵，需要自行[**下载**](https://www.oracle.com/java/technologies/downloads/#java11-windows)解压后放在 **ToolsLib** 下喵~
+3. abe的运行是需要 **java11** 环境的喵，本项目调用的是便携版 **java11(jdk11)** 的喵，需要自行[**下载**](https://www.oracle.com/java/technologies/downloads/#java11-windows)解压后放在 **PhiLocalLib** 下喵~
 
-4. adb工具本项目仓库已经在 **ToolsLib** 文件夹下了喵，非必要不建议去换adb版本喵~
+4. adb工具本项目仓库已经在 **PhiLocalLib** 文件夹下了喵，非必要不建议去换adb版本喵~
 
-5. abe工具本项目仓库也已经有了喵，如果要自己下载的话可以去[**此处**](https://github.com/nelenkov/android-backup-extractor/releases)下载新版来替换 **ToolsLib** 下的 **abe.jar** 喵~
+5. abe工具本项目仓库也已经有了喵，如果要自己下载的话可以去[**此处**](https://github.com/nelenkov/android-backup-extractor/releases)下载新版来替换 **PhiLocalLib** 下的 **abe.jar** 喵~
 
 ## 使用喵！
 
@@ -46,7 +48,7 @@ pip3 install pyyaml
 或者如果想要一点仪式感也可以运行喵：
 
 ```
-pip3 -r PhigrosLocal/requirement.txt
+pip3 -r PhiLocalLib/requirement.txt
 ```
 
 ### <br>获取手机phigros本地存档喵：
@@ -54,19 +56,31 @@ pip3 -r PhigrosLocal/requirement.txt
 ```
 python GetSave.py [nogetab]
 ```
-`nogetab`：不获取ab文件喵，直接开始解包喵（**注意这个是方便debug的喵，不懂最好就别带这个参数**，只是在debug时已经获取过ab备份包时可以跳过获取喵）
+`nogetab`：不获取ab文件喵，直接开始解包喵（**注意这个是方便debug的喵，不懂最好就别带这个参数**，只是在debug时已经获取过ab备份包时可以用来跳过获取喵）
 
 注意在获取ab备份包时尽可能**不要输入密码喵**！（就算它给你输密码的地方也不要输先喵！除非是不输密码就不能备份的情况喵，要不然就不要输密码喵！避免发生奇奇怪怪的错误bug喵）
 
 ### <br>存档解密喵：
 
-目前仅能全部解密并进行极其简单的归类喵，大部分数据条目因为其命名的难懂性所以难以整理归类喵（这需要时间喵，真的不是因为懒喵，真的不是喵！）
+目前能解密存档所有数据喵，输出同原存档一样的xml格式文件喵
 
 ```
-python PhigrosLocal/DecryptPgrLocalSave.py
+python DecryptSave.py
 ```
 
-运行后会读取上级目录的`com.PigeonGames.Phigros.v2.playerprefs.xml`存档喵，然后在上级目录输出已解密且经过简单归类的`DecryptSave.json`文件喵
+运行后会读取目录下的`com.PigeonGames.Phigros.v2.playerprefs.xml`存档喵，然后输出已解密的`DecryptSave.xml`文件喵
+
+### <br>存档解析：
+
+说是说解析喵，严格来讲并不完全是喵，所以可以说是将xml存档转换解析并整理归类输出为json文件喵，但是大部分数据条目因为其命名的难懂性所以不整理归类了喵（已经整理差不多了喵，剩下的整理了也没有什么大用了喵）
+
+```
+python FormatSave.py
+```
+
+运行后会读取目录下`DecryptSave.xml`已解密存档文件喵，然后经解析后输出`DecryptSave.json`文件喵
+
+`DecryptSave.json`文件的数据结构可以参考`PhiLocalLib/FormatPgrLocalSave.py`中`game_save`的定义喵，也可以参考[JsonSave格式说明喵](./Json_Info.md)
 
 ### <br>获取sessionToken喵：
 
@@ -76,11 +90,11 @@ Mivik已经做了有手机版软件了喵，其他提取方法可以参考一下
 python GetSession.py [noget]
 ```
 
-`noget`：不获取userdata文件喵，直接读取.userdata（**注意这个是方便debug的喵，不懂最好就别带这个参数**，只是在debug时已经获取过userdata时可以跳过获取喵）
+`noget`：不获取userdata文件喵，直接读取.userdata（**注意这个是方便debug的喵，不懂最好就别带这个参数**，只是在debug时已经获取过userdata时可以用来跳过获取喵）
 
 ### 关于配置文件config.yaml：
 
-直接拿编辑器打开`PhigrosLocal/config.yaml`就可以了喵，本喵认为那点注释足够说明清楚各项配置的用途了喵
+直接拿编辑器打开`PhiLocalLib/config.yaml`就可以了喵，本喵认为那点注释足够说明清楚各项配置的用途了喵
 
 ## 未来计划功能喵！
 
@@ -90,9 +104,12 @@ python GetSession.py [noget]
     - [ ] 可利用root权限直接提取存档喵(快了快了喵)
 
 
-- [ ] **存档解密喵：**(尚未模块化喵)(注释不完整喵)
+- [x] **存档解密喵：**(已模块化喵)(注释较为完整喵)
     - [x] 完全解密所有数据喵
-    - [ ] 将数据全部归类喵(数据挺多也命名很迷惑喵，短时间不好说喵)
+
+
+- [x] **存档解析喵：**(已模块化喵)(注释较为完整喵)
+  - [x] 简单归类整理各数据
 
 
 - [ ] **存档修改喵：**(其实我感觉这没有什么意义的喵，所以目前并不打算做喵)
@@ -115,4 +132,4 @@ python GetSession.py [noget]
 
 (小声BB：我也不知道我为什么要写本地存档操作喵，就当是消遣吧喵。想专门搞这方面的大佬还是移步到[文酱](https://github.com/7aGiven)的项目[PhigrosLibrary](https://github.com/7aGiven/PhigrosLibrary)吧喵)
 
-(快去给[文酱](https://github.com/7aGiven)和[废酱](https://github.com/Catrong)的项目star喵！)
+(快去给[文酱](https://github.com/7aGiven)和[废酱](https://github.com/Catrong)的项目点star喵！)
