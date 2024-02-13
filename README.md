@@ -27,26 +27,26 @@
 
 2. 注意在使用本项目前要先安装`PhigrosLocal/requirement.txt`中的模块喵(虽然目前只有一个`pyyaml`喵)
 
-3. abe的运行是需要 **java11** 环境的喵，本项目调用的是便携版 **java11(jdk11)** 的喵，需要自行[**下载**](https://www.oracle.com/java/technologies/downloads/#java11-windows)解压后放在 **PhigrosLocal** 下喵~
+3. abe的运行是需要 **java11** 环境的喵，本项目调用的是便携版 **java11(jdk11)** 的喵，需要自行[**下载**](https://www.oracle.com/java/technologies/downloads/#java11-windows)解压后放在 **ToolsLib** 下喵~
 
-4. adb工具本项目仓库已经在 **PhigrosLocal** 文件夹下了喵，非必要不建议去换adb版本喵~
+4. adb工具本项目仓库已经在 **ToolsLib** 文件夹下了喵，非必要不建议去换adb版本喵~
 
-5. abe工具本项目仓库也已经有了喵，如果要自己下载的话可以去[**此处**](https://github.com/nelenkov/android-backup-extractor/releases)下载新版来替换 **PhigrosLocal** 下的 **abe.jar** 喵~
+5. abe工具本项目仓库也已经有了喵，如果要自己下载的话可以去[**此处**](https://github.com/nelenkov/android-backup-extractor/releases)下载新版来替换 **ToolsLib** 下的 **abe.jar** 喵~
 
 ## 使用喵！
 
-### 安装pyyaml库和pycryptodome库喵：(因为本项目配置文件用的是yaml)
+### 安装pyyaml库喵：(因为本项目配置文件用的是yaml)
 
 直接运行喵：(用`pip`也可以的亚子喵(?))
 
 ```
-pip3 install pyyaml pycryptodome
+pip3 install pyyaml
 ```
 
 或者如果想要一点仪式感也可以运行喵：
 
 ```
-pip3 install -r PhigrosLocal/requirement.txt
+pip3 -r PhigrosLocal/requirement.txt
 ```
 
 ### <br>获取手机phigros本地存档喵：
@@ -60,19 +60,13 @@ python GetSave.py [nogetab]
 
 ### <br>存档解密喵：
 
-注意存档解密还尚未完善喵，并没有进行过多的人性化操作喵，懂 **python** 的大佬们墙裂建议先阅读完代码后再进行存档解密喵！（不懂也没关系的喵，本喵认为下面应该都讲清楚了喵）
-
 目前仅能全部解密并进行极其简单的归类喵，大部分数据条目因为其命名的难懂性所以难以整理归类喵（这需要时间喵，真的不是因为懒喵，真的不是喵！）
 
 ```
-cd PhigrosLocal
-python DecryptPgrLocalSave.py
+python PhigrosLocal/DecryptPgrLocalSave.py
 ```
 
 运行后会读取上级目录的`com.PigeonGames.Phigros.v2.playerprefs.xml`存档喵，然后在上级目录输出已解密且经过简单归类的`DecryptSave.json`文件喵
-
-说白了就是未解密的存档放在`PhigrosLocal`的上级目录喵（可以理解为放在本项目的根目录下喵，文件名得是`com.PigeonGames.Phigros.v2.playerprefs.xml`）
-解密后且经过简单分类的数据就在跟未解密存档同一个目录下的`DecryptSave.json`中喵（可以理解为放在本项目的根目录下喵）
 
 ### <br>获取sessionToken喵：
 
