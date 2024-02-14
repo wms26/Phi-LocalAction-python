@@ -11,7 +11,7 @@
 [![phi-plugin](https://img.shields.io/badge/废酱-phi--plugin-blue?style=for-the-badge&logo=github)](https://github.com/Catrong/phi-plugin)
 
 
-[![Phi-LocalAction-python_v0.7beta](https://img.shields.io/badge/PRE--release-Phi--LocalAction--python__v0.7beta-yellow?style=for-the-badge&logo=Github)](https://github.com/wms26/Phi-LocalAction-python/releases/download/v0.7beta/Phi-LocalAction-python_v0.7beta.zip)
+[![Phi-LocalAction-python_v0.8beta-Alpha](https://img.shields.io/badge/PRE--release-Phi--LocalAction--python__v0.8beta--Alpha-yellow?style=for-the-badge&logo=Github)](https://github.com/wms26/Phi-LocalAction-python/releases/download/v0.8beta-Alpha/Phi-LocalAction-python_v0.8beta-Alpha.zip)
 </div>
 
 ## 声明喵：
@@ -20,13 +20,13 @@
 
 编写本项目所需的资料和资源均源于互联网收集喵(所以本人就是一个废物喵，什么都要依靠互联网喵(bushi))
 
-本项目的初衷仅仅是为了供学习参考使用喵，本人从未想过要破坏音游圈的游戏平衡喵！(目前并不会编写存档修改的功能喵，如果你是抱着该目的来的话请另寻他路喵)
+本项目的初衷仅仅是为了供学习参考使用喵，本人从未想过要破坏音游圈的游戏平衡喵！(目前修改本地存档的操作不可能完成，如果你是抱着该目的来的话请另寻他路喵)
 
 ## 环境准备喵！
 
 1. 编写本项目时使用的是 **python3.9.13** 的喵，不能完全保证其他版本会不会出现问题喵，建议使用 **python>=3.9** 来运行喵~
 
-2. 注意在使用本项目前要先安装`PhiLocalLib/requirement.txt`中的模块喵(虽然目前只有`pyyaml`和`pycryptodome`喵)
+2. 注意在使用本项目前要先安装`PhiLocalLib/requirement.txt`中的模块喵
 
 3. abe的运行是需要 **java11** 环境的喵，本项目调用的是便携版 **java11(jdk11)** 的喵，需要自行[**下载**](https://www.oracle.com/java/technologies/downloads/#java11-windows)解压后放在 **PhiLocalLib** 下喵~
 
@@ -41,7 +41,7 @@
 直接运行喵：(用`pip`也可以的亚子喵(?))
 
 ```
-pip3 install pyyaml pycryptodome
+pip3 install pyyaml pycryptodome lxml
 ```
 
 或者如果想要一点仪式感也可以运行喵：
@@ -111,15 +111,14 @@ python GetSession.py [noget]
   - [x] 简单归类整理各数据
 
 
-- [ ] **存档修改喵：**(其实我感觉这没有什么意义的喵，所以目前并不打算做喵)
-    - [ ] 这不好说喵，可能会做可能永远不会做喵，并且理论上要修改本地存档有一个强制性要求就是手机必须能读写系统data目录喵(
-      然而这只有root了才能做到喵！)
+- [ ] **存档修改喵：**(已废弃，后续不再更新此功能)
+    - [ ] 经过测试，鸽游对本地存档似乎做了一些检查，所以修改本地存档基本不可能完成
 
 
 - [ ] **其他喵：**
     - [x] fuck_adb(adb的文件占用是真的烦喵！(恼))
     - [x] 获取本地SessionToken喵
-    - [ ] 将各功能模块化喵(更方便使用喵，但是这可能得到以后才能真正完成喵)
+    - [x] 将各功能模块化喵(更方便使用喵，但是这可能得到以后才能真正完成喵)
 
 ## 喵喵喵~
 
