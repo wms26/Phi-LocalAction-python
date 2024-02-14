@@ -6,7 +6,9 @@ import os.path  # 用于路径拼接喵
 
 # ---------------------- 定义赋值区 ----------------------
 
-savePath = './com.PigeonGames.Phigros.v2.playerprefs.xml'  # 存档文件路径喵
+# savePath = os.path.join(config('outpath'), 'EncryptJsonSave.xml')  # 存档文件路径喵
+# outSave = os.path.join(config('outpath'), 'DecryptJsonSave.xml')  # 解密后存档路径喵
+savePath = os.path.join(config('outpath'), 'com.PigeonGames.Phigros.v2.playerprefs.xml')  # 存档文件路径喵
 outSave = os.path.join(config('outpath'), 'DecryptSave.xml')  # 解密后存档路径喵
 
 # ----------------------- 运行区 -----------------------

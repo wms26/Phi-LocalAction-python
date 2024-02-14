@@ -1,5 +1,6 @@
 # 萌新写的代码喵，可能不是很好喵，但是已经尽可能注释了喵，希望各位大佬谅解喵=v=
 # ----------------------- 导包区 -----------------------
+from PhiLocalLib.ActionLib import is_dict
 import xml.etree.ElementTree as ET
 import json
 import re
@@ -9,6 +10,7 @@ import re
 # 定义一个字典用于存储解析后数据喵
 game_save = {
     'info': {},  # pgr的一些数值喵(?)
+    'int': {},  # pgr中int类型的数据喵，不建议乱动喵！
     'record': {},  # 打歌的记录喵(c：Full Combo，s：分数，a：ACC)
     'key': {
         'single': {},  # 实际带0key头喵，对应单曲解锁喵
@@ -55,31 +57,6 @@ info_pattern = (  # info部分的正则匹配列表
     'chapter8Passed',  # 第八章通过
     'ReadLanota1',  # 读取Lanota收藏品(解锁两首AT)
 )
-
-
-def is_dict(string):
-    """用来判断一个字符串是否为'预期的'字典喵\n
-    string：要判断的数据喵\n
-    (预期的字典是类似'{'a': '123'}'的喵)"""
-    try:
-        json.loads(string)  # 尝试loads转换喵(但字符串'1'和浮点数0.1都可以正常转换喵，所以需要进一步判断喵)
-
-    except json.decoder.JSONDecodeError:  # 出现JSONDecodeError错误则返回False喵
-        return False
-
-    try:
-        int(string)  # 尝试转换为整数喵(字符串'1'和浮点数0.1都可以正常转换，但字符串'0.1'不能喵)
-        return False  # 能转换就不是喵
-
-    except ValueError:  # 不能转换就再进一步判断喵
-        try:
-            float(string)  # 尝试转换为浮点数喵(字符串'0.1'可以正常转换喵)
-            return False  # 能转换就不是喵
-
-        except ValueError:  # 都不能转换那就是'预期中的'字典喵
-            pass
-
-        return True
 
 
 def FormatSave(infile, outfile):  # 这就是一坨烂屎喵(确信喵)
@@ -142,7 +119,7 @@ def FormatSave(infile, outfile):  # 这就是一坨烂屎喵(确信喵)
         elif data.tag == 'int':  # int类型的看起来都是一些数值喵(?)
             attrib_str = data.attrib.get('name', '')
             text_str = data.attrib.get('value', '')
-            game_save['info'][attrib_str] = text_str
+            game_save['int'][attrib_str] = text_str
 
         else:  # 没归类的全部丢到other去喵
             attrib_str = data.attrib.get('name', '')

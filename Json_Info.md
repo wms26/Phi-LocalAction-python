@@ -5,6 +5,7 @@
 ```
 {
     'info': {},  # pgr的一些数值喵(?)
+    'int': {},  # pgr中int类型的数据喵，不建议乱动喵！
     'record': {},  # 打歌的记录喵(c：Full Combo，s：分数，a：ACC)
     'key': {
         'single': {},  # 实际带0key头喵，对应单曲解锁喵

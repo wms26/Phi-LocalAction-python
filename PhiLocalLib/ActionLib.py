@@ -1,12 +1,21 @@
 # 萌新写的代码喵，可能不是很好喵，但是已经尽可能注释了喵，希望各位大佬谅解喵=v=
 # ----------------------- 导包区 -----------------------
+from Crypto.Cipher import AES  # 用来AES加解密喵
+from Crypto.Util import Padding  # 用来AES加解密时填充喵
+import base64  # 用来base64编解码喵
+import urllib.parse  # 用来URL编解码喵
 import subprocess
 import os
+import json
 import yaml
 
 # ---------------------- 定义赋值区 ----------------------
 
 local_path = os.path.dirname(os.path.abspath(__file__))  # 获取当前脚本的绝对路径喵
+
+# 定义AES CBC加密的密钥(key)和偏移值(iv)喵
+aes_key = bytes.fromhex("627ff1942185e011c815e81e639b9a00001c766b826c29bd96578589f19a6fd6")
+aes_iv = bytes.fromhex("be56167f83da3befeff81861a5c5f3cd")
 
 config_name = 'config.yaml'
 config_path = os.path.join(local_path, config_name)
@@ -144,6 +153,60 @@ def adbCmd(cmd):  # 我也不知道为什么要定义这个喵（
     """便捷(?)运行adb指令喵(?)\n
     cmd：运行adb时附带的参数喵"""
     return runCmd(adb_path + ' ' + cmd)
+
+
+def is_dict(string):
+    """用来判断一个字符串是否为'预期的'字典喵\n
+    string：要判断的数据喵\n
+    (预期的字典是类似'{'a': '123'}'的喵)"""
+    try:
+        json.loads(string)  # 尝试loads转换喵(但字符串'1'和浮点数0.1都可以正常转换喵，所以需要进一步判断喵)
+
+    except json.decoder.JSONDecodeError:  # 出现JSONDecodeError错误则返回False喵
+        return False
+
+    except TypeError:
+        json.dumps(string)
+        return True
+
+    try:
+        int(string)  # 尝试转换为整数喵(字符串'1'和浮点数0.1都可以正常转换，但字符串'0.1'不能喵)
+        return False  # 能转换就不是喵
+
+    except ValueError:  # 不能转换就再进一步判断喵
+        try:
+            float(string)  # 尝试转换为浮点数喵(字符串'0.1'可以正常转换喵)
+            return False  # 能转换就不是喵
+
+        except ValueError:  # 都不能转换那就是'预期中的'字典喵
+            pass
+
+        return True
+
+
+def AESDecrypt(string):  #
+    """进行AES CBC解密喵\n
+    会返回处理过的数据和是否解密成功的布尔值\n
+    string：需要解密的数据喵"""
+    decoded_string = urllib.parse.unquote(string)  # URL解码喵
+    try:
+        encrypted_data = base64.b64decode(decoded_string)  # Base64解码喵
+        cipher = AES.new(aes_key, AES.MODE_CBC, aes_iv).decrypt(encrypted_data)  # 创建一个AES解密的对象并解密喵
+        decrypted_data = Padding.unpad(cipher, AES.block_size)  # 对解密后数据进行去填充喵
+        return decrypted_data.decode('utf-8'), True  # 将解密后的二进制数据进行utf-8解码并返回喵，并返回True标识解密完成
+
+    except ValueError:  # 如果解密错误喵，并且错误类型为ValueError喵
+        return decoded_string, False  # 返回经过URL解码后的数据喵
+
+
+def AESEncrypt(string):
+    """进行AES CBC加密喵\n
+    string：需要加密的字符串"""
+    encode_data = string.encode('utf-8')  # utf-8编码为字节数据喵
+    pad_data = Padding.pad(encode_data, AES.block_size)  # 填充数据准备AES CBC加密喵
+    encrypt_data = AES.new(aes_key, AES.MODE_CBC, aes_iv).encrypt(pad_data)  # 加密并填充数据喵
+    encoded_data = base64.b64encode(encrypt_data)  # Base64编码并转换为字符串喵
+    return urllib.parse.quote(encoded_data).replace('/', '%2F')  # 对字符串进行URL编码并返回喵
 
 
 # ----------------------- 运行区 -----------------------
