@@ -11,7 +11,7 @@
 [![phi-plugin](https://img.shields.io/badge/废酱-phi--plugin-blue?style=for-the-badge&logo=github)](https://github.com/Catrong/phi-plugin)
 
 
-[![Phi-LocalAction-python_v0.8beta-Alpha](https://img.shields.io/badge/PRE--release-Phi--LocalAction--python__v0.8beta--Alpha-yellow?style=for-the-badge&logo=Github)](https://github.com/wms26/Phi-LocalAction-python/releases/download/v0.8beta-Alpha/Phi-LocalAction-python_v0.8beta-Alpha.zip)
+[![Phi-LocalAction-python_v0.8beta-Alpha](https://img.shields.io/badge/Latest--release-Phi--LA--py__v0.8beta--Alpha-green?style=for-the-badge&logo=Github)](https://github.com/wms26/Phi-LocalAction-python/releases/download/v0.8beta-Alpha/Phi-LocalAction-python_v0.8beta-Alpha.zip)
 </div>
 
 ## 声明喵：
