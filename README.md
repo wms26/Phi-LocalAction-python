@@ -7,12 +7,17 @@
 
 <img src="https://counter.seku.su/cmoe?name=phi-local-py&theme=r34" title="喵喵喵~"/><br>
 
+[![Phi-CloudAction-python](https://img.shields.io/badge/Github-CloudAction(云端)-red?style=for-the-badge&logo=Github)](https://github.com/wms26/Phi-CloudAction-python)
+
+
 [![PhigrosLibrary](https://img.shields.io/badge/文酱-Phigros_Library-blue?style=for-the-badge&logo=Github)](https://github.com/7aGiven/PhigrosLibrary)
 [![phi-plugin](https://img.shields.io/badge/废酱-phi--plugin-blue?style=for-the-badge&logo=github)](https://github.com/Catrong/phi-plugin)
 
 
 [![Phi-LocalAction-python_v0.8beta-Alpha](https://img.shields.io/badge/PRE--release-Phi--LocalAction--python__v0.8beta--Alpha-yellow?style=for-the-badge&logo=Github)](https://github.com/wms26/Phi-LocalAction-python/releases/download/v0.8beta-Alpha/Phi-LocalAction-python_v0.8beta-Alpha.zip)
 </div>
+
+# 开学了喵，本项目将会保持极低频率的更新喵（
 
 ## 声明喵：
 
@@ -36,7 +41,7 @@
 
 ## 使用喵！
 
-### 安装pyyaml库和pycryptodome库喵：(因为本项目配置文件用的是yaml)
+### 安装pyyaml库和pycryptodome库和lxml库喵：(因为本项目配置文件用的是yaml)
 
 直接运行喵：(用`pip`也可以的亚子喵(?))
 
@@ -47,7 +52,7 @@ pip3 install pyyaml pycryptodome lxml
 或者如果想要一点仪式感也可以运行喵：
 
 ```
-pip3 -r PhiLocalLib/requirement.txt
+pip3 install -r PhiLocalLib/requirement.txt
 ```
 
 ### <br>获取手机phigros本地存档喵：
