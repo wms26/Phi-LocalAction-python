@@ -7,8 +7,6 @@
 
 <img src="https://counter.seku.su/cmoe?name=phi-local-py&theme=r34" title="喵喵喵~"/><br>
 
-[![Phi-CloudAction-python](https://img.shields.io/badge/Github-CloudAction(云端)-red?style=for-the-badge&logo=Github)](https://github.com/wms26/Phi-CloudAction-python)
-
 
 [![PhigrosLibrary](https://img.shields.io/badge/文酱-Phigros_Library-blue?style=for-the-badge&logo=Github)](https://github.com/7aGiven/PhigrosLibrary)
 [![phi-plugin](https://img.shields.io/badge/废酱-phi--plugin-blue?style=for-the-badge&logo=github)](https://github.com/Catrong/phi-plugin)
@@ -33,7 +31,7 @@
 
 2. 注意在使用本项目前要先安装`PhiLocalLib/requirement.txt`中的模块喵
 
-3. abe的运行是需要 **java11** 环境的喵，本项目调用的是便携版 **java11(jdk11)** 的喵，需要自行[**下载**](https://www.oracle.com/java/technologies/downloads/#java11-windows)解压后放在 **PhiLocalLib** 下喵~
+3. abe的运行是需要 **java** 环境的喵，本喵用的是便携版 **java11(jdk11)** 的喵，可自行[**下载**](https://www.oracle.com/java/technologies/downloads/#java11-windows)解压后放在 **PhiLocalLib** 下喵~(**注意java9似乎也可以的喵**)
 
 4. adb工具本项目仓库已经在 **PhiLocalLib** 文件夹下了喵，非必要不建议去换adb版本喵~
 
@@ -123,7 +121,9 @@ python GetSession.py [noget]
 - [ ] **其他喵：**
     - [x] fuck_adb(adb的文件占用是真的烦喵！(恼))
     - [x] 获取本地SessionToken喵
-    - [x] 将各功能模块化喵(更方便使用喵，但是这可能得到以后才能真正完成喵)
+    - [ ] 整理屎山代码喵！！！(之前在搞其他东西喵，现在都没眼看这坨代码了喵)
+    - [ ] 将各功能模块化喵(更方便使用喵，但是这可能得到以后才能真正完成喵)
+    - [ ] 将abe使用python实现喵(目前是对未加密的ab备份包能直接解包喵，加密的解包过程太复杂喵)
 
 ## 喵喵喵~
 
@@ -136,3 +136,7 @@ python GetSession.py [noget]
 (小声BB：我也不知道我为什么要写本地存档操作喵，就当是消遣吧喵。想专门搞这方面的大佬还是移步到[文酱](https://github.com/7aGiven)的项目[PhigrosLibrary](https://github.com/7aGiven/PhigrosLibrary)吧喵)
 
 (快去给[文酱](https://github.com/7aGiven)和[废酱](https://github.com/Catrong)的项目点star喵！)
+
+## 关于云存档的python实现喵：
+
+这东西啊喵，不好说喵，看情况吧喵
