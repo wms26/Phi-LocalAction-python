@@ -1,9 +1,10 @@
 # 萌新写的代码喵，可能不是很好喵，但是已经尽可能注释了喵，希望各位大佬谅解喵=v=
 # ----------------------- 导包区 -----------------------
+from json import dumps
+from re import match, findall
+from xml.etree import ElementTree
+
 from PhiLocalLib.ActionLib import is_dict
-import xml.etree.ElementTree as ET
-import json
-import re
 
 # ---------------------- 定义赋值区 ----------------------
 
@@ -59,11 +60,11 @@ info_pattern = (  # info部分的正则匹配列表
 )
 
 
-def FormatSave(infile, outfile):  # 这就是一坨烂屎喵(确信喵)
+def FormatSave(save_path: str, out_path: str):  # 这就是一坨烂屎喵(确信喵)
     """整理并输出json格式文件喵\n
-    infile：已解密存档文件喵\n
-    outfile：整理后json文件喵"""
-    saveTree = ET.parse(infile)  # 打开并解析存档文件喵
+    save_path：已解密存档文件喵\n
+    out_path：整理后json文件喵"""
+    saveTree = ElementTree.parse(save_path)  # 打开并解析存档文件喵
     saveData = saveTree.getroot()  # 进一步解析存档文件喵
 
     line = 1  # 定义一下起始行数喵，方便debug查错喵(方便查是哪一行数据引发的错误喵)
@@ -77,8 +78,8 @@ def FormatSave(infile, outfile):  # 这就是一坨烂屎喵(确信喵)
             attrib_str = data.attrib.get('name', '')  # 取标签name的值
             text_str = data.text  # 取该元素的内容喵
 
-            if re.match(r'^\dkey.*', attrib_str):  # 用来分类带key头的喵
-                head_int = int(re.findall(key_pattern, attrib_str)[0])
+            if match(r'^\dkey.*', attrib_str):  # 用来分类带key头的喵
+                head_int = int(findall(key_pattern, attrib_str)[0])
                 if head_int < len(keys) and len(keys) - head_int <= len(keys):  # 单曲解锁喵
                     game_save['key'][keys[head_int]][attrib_str.replace(str(head_int) + 'key', '')] = text_str
 
@@ -88,20 +89,20 @@ def FormatSave(infile, outfile):  # 这就是一坨烂屎喵(确信喵)
             elif is_dict(text_str):  # 打歌记录喵
                 game_save['record'][attrib_str] = text_str
 
-            elif re.match(r'.*CollectionTextOpened$', attrib_str):  # 收藏品打开情况喵
+            elif match(r'.*CollectionTextOpened$', attrib_str):  # 收藏品打开情况喵
                 game_save['open'][attrib_str.replace('CollectionTextOpened', '')] = text_str
 
-            elif re.match(r'.*Grade$', attrib_str):  # 部分歌曲的IN难度解锁喵
+            elif match(r'.*Grade$', attrib_str):  # 部分歌曲的IN难度解锁喵
                 game_save['grade'][attrib_str.replace('Grade', '')] = text_str
 
             elif 'lock' in attrib_str:  # 对应一些歌曲的解锁和第八章的解锁喵
                 game_save['lock'][attrib_str] = text_str
 
-            elif re.match(r'^Now.*', attrib_str):  # 每章节停留的歌曲
-                if re.match(r'^NowSongId.*', attrib_str):  # 曲名
+            elif match(r'^Now.*', attrib_str):  # 每章节停留的歌曲
+                if match(r'^NowSongId.*', attrib_str):  # 曲名
                     game_save['now']['id'][attrib_str] = text_str
 
-                elif re.match(r'^NowSong.*', attrib_str):  # 歌曲id
+                elif match(r'^NowSong.*', attrib_str):  # 歌曲id
                     game_save['now']['song'][attrib_str] = text_str
 
                 else:
@@ -109,7 +110,7 @@ def FormatSave(infile, outfile):  # 这就是一坨烂屎喵(确信喵)
 
             else:  # 太抽象了喵，不想解析了喵（
                 for pattern in info_pattern:  # 遍历正则匹配规则喵（
-                    if re.match(pattern, attrib_str):
+                    if match(pattern, attrib_str):
                         game_save['info'][attrib_str] = text_str
                         break
 
@@ -132,9 +133,9 @@ def FormatSave(infile, outfile):  # 这就是一坨烂屎喵(确信喵)
 
         print(f"[Info]{line}  类型喵: {data.tag}, 标签喵: {attrib_str}, 内容喵: {text_str}")
 
-    with open(outfile, mode='w', encoding='utf-8') as file:
-        file.write(json.dumps(game_save, sort_keys=True, ensure_ascii=False, indent=4))
-        print(f'\n[Info]写入文件成功喵！路径喵：{outfile}')
+    with open(out_path, mode='w', encoding='utf-8') as file:
+        file.write(dumps(game_save, sort_keys=True, ensure_ascii=False, indent=4))
+        print(f'\n[Info]写入文件成功喵！路径喵：{out_path}')
         file.close()
 
 # ----------------------- 运行区 ----------------------- (bushi)

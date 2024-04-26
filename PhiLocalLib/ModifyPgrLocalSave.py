@@ -1,7 +1,8 @@
 # 萌新写的代码喵，可能不是很好喵，但是已经尽可能注释了喵，希望各位大佬谅解喵=v=
 # ----------------------- 导包区 -----------------------
-from PhiLocalLib.ActionLib import AESEncrypt, AESDecrypt
 from lxml import etree  # 用来解析xml文件喵
+
+from PhiLocalLib.ActionLib import AESEncrypt, AESDecrypt
 
 # ---------------------- 定义赋值区 ----------------------
 
@@ -40,7 +41,8 @@ def ModifySave(infile, outfile, name, string, skip=False):
         print(f'{string}  =>  {AESEncrypt(string)}')
 
     # 获取原始XML声明
-    original_declaration = str(saveTree.docinfo.xml_version) + " encoding='" + str(saveTree.docinfo.encoding) + "' standalone='" + str(saveTree.docinfo.standalone) + "'"
+    original_declaration = str(saveTree.docinfo.xml_version) + " encoding='" + str(
+        saveTree.docinfo.encoding) + "' standalone='" + str(saveTree.docinfo.standalone) + "'"
 
     saveTree.write(outfile, pretty_print=True, xml_declaration=original_declaration, encoding='utf-8', standalone='yes')
 

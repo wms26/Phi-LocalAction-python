@@ -1,3 +1,3 @@
-from PhiLocalLib.GetPgrLocalSave import kill_adb
+from PhiLocalLib.ActionLib import kill_adb
 
 kill_adb()
