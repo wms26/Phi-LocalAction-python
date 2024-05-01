@@ -7,6 +7,7 @@
 
 <img src="https://counter.seku.su/cmoe?name=phi-local-py&theme=r34" title="喵喵喵~"/><br>
 
+[![Phi-CloudAction-python](https://img.shields.io/badge/GITHUB-Cloud%20Action(云端操作)-green?style=for-the-badge&logo=Github)](https://github.com/wms26/Phi-CloudAction-python)
 
 [![PhigrosLibrary](https://img.shields.io/badge/文酱-Phigros_Library-blue?style=for-the-badge&logo=Github)](https://github.com/7aGiven/PhigrosLibrary)
 [![phi-plugin](https://img.shields.io/badge/废酱-phi--plugin-blue?style=for-the-badge&logo=github)](https://github.com/Catrong/phi-plugin)
@@ -152,6 +153,9 @@ python GetSession.py [noget]
 > 所以修改本地存档是不可能的，请不要进行任何无意义尝试，否则后果自负！
 
 ## 更新日志喵
+
+### 2024/05/01：
+1. 为项目增加了`GNU GPLv3`许可证
 
 ### 2024/04/26：
 1. 整理了屎山代码，将N个函数的传参和对应注释简要修改优化了一下可能也许大概？
