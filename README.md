@@ -16,7 +16,7 @@
 [![Phi-LocalAction-python_v0.8beta-Alpha](https://img.shields.io/badge/Latest--release-Phi--LA--py__v0.8beta--Alpha-green?style=for-the-badge&logo=Github)](https://github.com/wms26/Phi-LocalAction-python/releases/download/v0.8beta-Alpha/Phi-LocalAction-python_v0.8beta-Alpha.zip)
 </div>
 
-# 开学了喵，本项目将会保持极低频率的更新喵（
+# 近期繁忙，本项目将会暂时停止更新喵（
 
 ## 声明喵：
 
