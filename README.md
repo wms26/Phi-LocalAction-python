@@ -7,26 +7,38 @@
 
 <img src="https://counter.seku.su/cmoe?name=phi-local-py&theme=r34" title="喵喵喵~"/><br>
 
-[![Phi-CloudAction-python](https://img.shields.io/badge/GITHUB-Cloud%20Action(云端操作)-green?style=for-the-badge&logo=Github)](https://github.com/wms26/Phi-CloudAction-python)
+[![Phi-CloudAction-python](<https://img.shields.io/badge/GITHUB-Cloud%20Action(云端操作)-green?style=for-the-badge&logo=Github>)](https://github.com/wms26/Phi-CloudAction-python)
 
 [![PhigrosLibrary](https://img.shields.io/badge/文酱-Phigros_Library-blue?style=for-the-badge&logo=Github)](https://github.com/7aGiven/PhigrosLibrary)
 [![phi-plugin](https://img.shields.io/badge/废酱-phi--plugin-blue?style=for-the-badge&logo=github)](https://github.com/Catrong/phi-plugin)
 
-
 [![Phi-LocalAction-python_v0.8beta-Alpha](https://img.shields.io/badge/Latest--release-Phi--LA--py__v0.8beta--Alpha-green?style=for-the-badge&logo=Github)](https://github.com/wms26/Phi-LocalAction-python/releases/download/v0.8beta-Alpha/Phi-LocalAction-python_v0.8beta-Alpha.zip)
+
 </div>
 
-# 因为各种原因，本项目进入长期停更状态，非必要将不会进行任何更新......
+# 因为各种原因，本项目进入长期半停更状态，没有问题情况下将不会进行过多的更新......
+
+## （未来可能会重构所有代码喵）
 
 ## 声明喵：
 
-本项目仅作为学习参考用喵，请勿用作违法用途喵！(虽然我也想不到能做什么违法的事情就是了喵)
+1. **本项目仅作为学习参考使用，严禁用于任何形式的网络攻击、非法数据获取、破坏游戏平衡等违反用户所在国家/地区法律的行为。使用本项目进行违法活动所产生的全部法律风险由使用者自行承担。**
 
-编写本项目所需的资料和资源均源于互联网收集喵(所以本人就是一个废物喵，什么都要依靠互联网喵(bushi))
+2. **编写本项目所需的资料和资源均源于互联网收集喵(所以本人就是一个废物喵，什么都要依靠互联网喵(bushi))**
 
-本项目的初衷仅仅是为了供学习参考使用喵，本人从未想过要破坏音游圈的游戏平衡喵！(目前修改本地存档的操作不可能完成，如果你是抱着该目的来的话请另寻他路喵)[[关于修改存档](#关于存档修改喵)]
+3. **本项目的初衷仅仅是为了供学习参考使用喵，本人从未想过要破坏音游圈的游戏平衡喵！**
 
-由于本喵本身技术的局限性喵，所以写出来的代码和注释可能不是很好喵，还请各位大佬谅解！
+4. **本项目作者不鼓励、不支持任何形式的商业用途。若您将本项目或其修改版本用于商业目的，所产生的一切后果（包括但不限于法律纠纷、用户投诉等）均与原作者及贡献者无关。**
+
+5. **对于本项目，请不要做出让任何一个音游玩家都会十分反感的事情！**
+
+6. **本项目与 Pigeon Games、TapTap 没有任何关联，也未获其认可或支持。项目中涉及的游戏资源（如曲目定数、存档结构等）均为其各自所有者的财产，我们仅出于学习研究目的进行非商业性引用。**
+
+7. **如果你认为本项目不应该存在或者有其他问题，可以提交Issues或者发送邮件到qianqi26@616.sb，我时不时会去查看邮箱**
+
+8. **对于本项目有建议或者问题的请提交Issue谢谢喵~(提Issue方便往后其他有相同问题的人不会再问一遍喵)**
+
+9. **由于本喵本身技术的局限性喵，所以写出来的代码和注释可能不是很好喵，还请各位大佬谅解！**
 
 ## 环境准备喵！
 
@@ -105,28 +117,24 @@ python GetSession.py [noget]
 ## 未来计划功能喵！
 
 - [ ] **存档提取喵：**(已模块化喵)(注释较为完整喵)
-    - [x] 通过adb获取ab提取存档喵
-    - [x] 防呆措施喵(bushi)
-    - [ ] 可利用root权限直接提取存档喵(快了快了喵)
-    - [ ] 将abe使用python实现喵(目前是对未加密的ab备份包能直接解包喵，加密的解包过程太复杂喵)
-
+  - [x] 通过adb获取ab提取存档喵
+  - [x] 防呆措施喵(bushi)
+  - [ ] 可利用root权限直接提取存档喵(快了快了喵)
+  - [ ] 将abe使用python实现喵(目前是对未加密的ab备份包能直接解包喵，加密的解包过程太复杂喵)
 
 - [x] **存档解密喵：**(已模块化喵)(注释较为完整喵)
-    - [x] 完全解密所有数据喵
-
+  - [x] 完全解密所有数据喵
 
 - [x] **存档解析喵：**(已模块化喵)(注释较为完整喵)
   - [x] 简单归类整理各数据
 
-
 - [ ] **存档修改喵：**(已废弃，后续不再更新此功能)
-    - [ ] 经过测试，鸽游对本地存档似乎做了一些检查，所以修改本地存档基本不可能完成
-
+  - [ ] 经过测试，鸽游对本地存档似乎做了一些检查，所以修改本地存档基本不可能完成
 
 - [ ] **其他喵：**
-    - [x] fuck_adb(adb的文件占用是真的烦喵！(恼))
-    - [x] 获取本地SessionToken喵
-    - [x] 整理屎山代码喵！！！(之前在搞其他东西喵，现在都没眼看这坨代码了喵)
+  - [x] fuck_adb(adb的文件占用是真的烦喵！(恼))
+  - [x] 获取本地SessionToken喵
+  - [x] 整理屎山代码喵！！！(之前在搞其他东西喵，现在都没眼看这坨代码了喵)
 
 ## 喵喵喵~
 
@@ -149,39 +157,45 @@ python GetSession.py [noget]
 > 要进行存档修改就必须拥有手机系统最高权限(安卓叫ROOT、IOS叫越狱)
 >
 > 而且请不要将修改后的存档覆盖回去！会导致phigros游戏进度重置(跟把phigros数据清除了似的)，回到最开始安装phigros没有登录的样子！所以请非云存档玩家不要进行这种没有意义的尝试！！！
-> 
+>
 > 所以修改本地存档是不可能的，请不要进行任何无意义尝试，否则后果自负！
 
 ## 更新日志喵
 
 ### 2026/02/24：
+
 1. 稍微整理了一下文件ww
+2. 重新审视了一遍项目，修正并添加了部分声明，重新规范了一下下用语（大概）
 
 ### 2024/05/01：
+
 1. 为项目增加了`GNU GPLv3`许可证
 
 ### 2024/04/26：
+
 1. 整理了屎山代码，将N个函数的传参和对应注释简要修改优化了一下可能也许大概？
 2. 更新了一些函数的用法
 3. 将配置文件类型改为ini(少装一个库~)，删除了一些没有什么必要的配置项
 4. 使用python实现了无加密AB备份包解包(加密的AB包解密逻辑有点看不太懂，希望有大佬浇浇)
 5. 更新了README.md，给README.md增加了更新日志~
 
-
 ### 2024/04/23：
+
 1. 更新README.md
 
 ### 2024/02/18：
+
 1. 更新README.md
 
 ### 2024/02/14：
+
 1. 新增了用来把已经解密了的存档加密回去的功能(EncryptPgrLocalSave.py)
 2. 把AES加解密的函数放进ActionLib.py里面了，方便其他模块调用
 3. 这次更新并没有做过多的错误检查，并且ModifyPgrLocalSave.py并没有完全写好，也已经没有必要写好了
 4. 经过测试鸽游已经对本地存档做了检查，具体逻辑并不清楚，但是修改本地存档的操作是不可能完成的了
 
-
 ### 2024/02/13：
+
 1. 增加了一个需要依赖的包(前面更新都忘记了这个包了)
 2. 稍微改了一下错误提示，减少误解
 3. 更正了README.md中的部分内容(之前改文件夹名忘记连着README.md一起改了)
@@ -197,6 +211,7 @@ python GetSession.py [noget]
 13. 更新了README.md
 
 ### 2024/02/12：
+
 1. 增加了获取sessionToken的功能
 2. 优化了部分代码逻辑，增加了一些注释
 3. 项目库文件夹改名，并且使用"\_\_init\_\_.py"让"PhigrosLocal"文件夹被识别为软件包，更方便调用代码
@@ -207,6 +222,7 @@ python GetSession.py [noget]
 8. 动了点DecryptPgrLocalSave.py的代码，加了点注释，优化了一丢丢代码逻辑，进一步分了类，多分了个Opened(看起来是收藏品是否打开的意思)
 
 ### 2024/02/11：
+
 1. 重新整理了代码和注释，小小优化了一下代码结构；
 2. 将部分功能函数拆分至ActionLib中，以更方便调用；
 3. 把配置改为一个独立的配置文件config.json，在ActionLib中提供便捷调用获取配置
